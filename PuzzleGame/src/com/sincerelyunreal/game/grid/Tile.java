@@ -10,10 +10,15 @@ package com.sincerelyunreal.game.grid;
  */
 public class Tile {
     
-    TileTypes type;
+    private TileTypes type;
     
     public Tile(TileTypes type){
         this.type = type;
+    }
+    
+    public TileTypes getType()
+    {
+        return this.type;
     }
     
 }

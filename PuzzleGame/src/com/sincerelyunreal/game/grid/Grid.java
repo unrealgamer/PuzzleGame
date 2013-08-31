@@ -33,8 +33,16 @@ public class Grid {
     private boolean checkForMatch(Row newRow){
         if(newRow.isMatch())
             return true;
-        for(int i = 0; i < MAX_COLUMNS; i++){
-            
+        
+        if(rows.size() >= 2)
+            return false;
+        
+        for(int c = 0; c < MAX_COLUMNS-1; c++){ //Iterates through each column
+            int curRow = rows.size() - 1; //The row beneath the row we are adding to the top
+            if(newRow.getTile(c).getType() == rows.get(curRow).getTile(c).getType()) //Check if the new tile and the tile beneath =
+                if(newRow.getTile(c).getType() == rows.get(curRow-1).getTile(c).getType()) //Check below that too
+                    return true;
         }
+        return false;
     } 
 }
