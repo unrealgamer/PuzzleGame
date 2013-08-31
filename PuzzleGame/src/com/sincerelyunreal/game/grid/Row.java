@@ -23,6 +23,12 @@ public class Row {
         this.tiles = tiles;
     }
     
+    public void swapTiles(int leftTileColumn)
+    {
+        Tile temp = tiles[leftTileColumn];
+        tiles[leftTileColumn] = tiles[leftTileColumn+1];
+        tiles[leftTileColumn+1] = temp;
+    }
     
     
     public Tile getTile(int col){
@@ -46,24 +52,37 @@ public class Row {
     }
     
     public boolean isMatch(){
+        int count = 2;
         for(int i = 0; i < Grid.MAX_COLUMNS - 1; i++)
+        {
+            if(count == 3)
+                return true;
             if(tiles[i].getType().equals(tiles[i + 1].getType()))
-                continue;
+                count++;
             else
-                return false;
-        return true;   
+                count = 2;
+        }
+        return false;   
     }
 
     public void draw(int r) {
         if(Tile.TileSheet == null)
             throw new NullPointerException("TileSheet has not been constructed");
-        Tile.TileSheet.startUse();
+        
+        
+        int tileCount = 0;
+        
         for(Tile t : tiles)
         {
-            int x = t.getType().ordinal() * 64;
+            
+            int x = tileCount * 64;
+            tileCount++;
             int y = r * 64;
+            Tile.TileSheet.startUse();
             Tile.TileSheet.getSubImage(t.getType().ordinal(), 0).drawEmbedded(x, y, 64, 64);
+            Tile.TileSheet.endUse();
         }
+        
 
     }
 }

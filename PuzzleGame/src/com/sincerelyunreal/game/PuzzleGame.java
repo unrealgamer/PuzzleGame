@@ -21,6 +21,8 @@ public class PuzzleGame extends StateBasedGame {
     
     public PuzzleGame(String gameName) {
         super(gameName);
+        this.addState(new Menu(menu));
+        this.addState(new Play(play));
     }
 
     /**

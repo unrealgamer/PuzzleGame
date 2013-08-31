@@ -41,7 +41,7 @@ public class Grid {
         if(newRow.isMatch())
             return true;
         
-        if(rows.size() >= 2)
+        if(rows.size() <= 2)
             return false;
         
         for(int c = 0; c < MAX_COLUMNS-1; c++){ //Iterates through each column
