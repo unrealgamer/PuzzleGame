@@ -47,7 +47,7 @@ public class Row {
     
     public boolean isMatch(){
         for(int i = 0; i < Grid.MAX_COLUMNS - 1; i++)
-            if(tiles[i].type.equals(tiles[i + 1].type))
+            if(tiles[i].getType().equals(tiles[i + 1].getType()))
                 continue;
             else
                 return false;
