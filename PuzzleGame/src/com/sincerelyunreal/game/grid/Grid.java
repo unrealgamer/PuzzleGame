@@ -5,6 +5,7 @@
 package com.sincerelyunreal.game.grid;
 
 import java.util.ArrayList;
+import org.newdawn.slick.SpriteSheet;
 
 /**
  *
@@ -15,9 +16,15 @@ public class Grid {
     public static final int MAX_COLUMNS = 6;
     public static final int INITIAL_ROWS = 6; 
     private ArrayList<Row> rows;
+    private SpriteSheet sheet;
     
     public Grid(ArrayList<Row> rows){
         this.rows = rows;
+    }
+
+    public Grid() {
+        rows = new ArrayList<Row>();
+        initializeGrid();
     }
     
     private void initializeGrid(){
@@ -44,5 +51,12 @@ public class Grid {
                     return true;
         }
         return false;
-    } 
+    }
+    
+    public void DrawTiles(){
+        for(int r = 0; r < rows.size(); r++)
+        {
+            rows.get(r).draw(r);
+        }
+    }
 }

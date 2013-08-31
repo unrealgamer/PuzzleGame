@@ -4,42 +4,45 @@
  */
 package com.sincerelyunreal.game;
 
+import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 /**
  *
  * @author Shane
  */
-public class PuzzleGame extends BasicGameState {
+public class PuzzleGame extends StateBasedGame {
+
+    private static final String gameName = "Puzzle";
+    public static final int menu = 0;
+    public static final int play = 1;
+    
+    public PuzzleGame(String gameName) {
+        super(gameName);
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        AppGameContainer appgc;
+        try {
+            appgc = new AppGameContainer(new PuzzleGame("654"));
+            appgc.setDisplayMode(384, 800, false);
+            appgc.setShowFPS(true);
+            appgc.start();
+        } catch (SlickException e) {
+        }
     }
 
     @Override
-    public int getID() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void initStatesList(GameContainer gc) throws SlickException {
+        this.getState(menu).init(gc, this);
+        this.getState(play).init(gc, this);
+        this.enterState(menu);
 
-    @Override
-    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void render(GameContainer gc, StateBasedGame sbg, Graphics grphcs) throws SlickException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //this.getState(settings).init(gc, this);
     }
 }

@@ -53,4 +53,17 @@ public class Row {
                 return false;
         return true;   
     }
+
+    public void draw(int r) {
+        if(Tile.TileSheet == null)
+            throw new NullPointerException("TileSheet has not been constructed");
+        Tile.TileSheet.startUse();
+        for(Tile t : tiles)
+        {
+            int x = t.getType().ordinal() * 64;
+            int y = r * 64;
+            Tile.TileSheet.getSubImage(t.getType().ordinal(), 0).drawEmbedded(x, y, 64, 64);
+        }
+
+    }
 }

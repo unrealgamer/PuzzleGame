@@ -7,6 +7,8 @@ package com.sincerelyunreal.game.grid;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 
 /**
  *
@@ -19,6 +21,8 @@ public enum TileTypes {
     GREEN,
     BLUE,
     PURPLE;
+    
+    
     
     public static TileTypes typeFromNumber(int num){
         return VALUES.get(num);
