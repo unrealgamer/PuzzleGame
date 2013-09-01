@@ -82,7 +82,15 @@ public class Row {
             Tile.TileSheet.getSubImage(t.getType().ordinal(), 0).drawEmbedded(x, y, 64, 64);
             Tile.TileSheet.endUse();
         }
-        
-
+    }
+    
+    public String toString()
+    {
+        String out = "";
+        for(Tile t : tiles)
+        {
+            out += t.getType().name() + "\t";
+        }
+        return out;
     }
 }
