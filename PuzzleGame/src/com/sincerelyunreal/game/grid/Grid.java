@@ -52,7 +52,7 @@ public class Grid {
     }
     
     public void DrawTiles(){
-        for(int r = 0; r < rows.size(); r++)
+        for(int r = rows.size() - 1;r >= 0 ; r--)
         {
             rows.get(r).draw(r);
         }
