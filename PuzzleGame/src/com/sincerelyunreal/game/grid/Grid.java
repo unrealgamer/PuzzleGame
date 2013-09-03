@@ -18,13 +18,16 @@ public class Grid {
     private ArrayList<Row> rows;
     private SpriteSheet sheet;
     
+    private Cursor c;
+    
     public Grid(ArrayList<Row> rows){
         this.rows = rows;
     }
 
     public Grid() {
-        rows = new ArrayList<Row>();
+        rows = new ArrayList<>();
         initializeGrid();
+        c = new Cursor();
     }
     
     private void initializeGrid(){
@@ -64,7 +67,42 @@ public class Grid {
         System.out.println(rows.size() + " " +newRow);
         for(int r = rows.size()-1; r >= 0; r--)
         {
-            System.out.println(r + " " + rows.get(r));
+            System.out.println(r + " " + rows.get(r) + " ");
         }
+    }
+
+    public void DrawCursor() {
+        c.draw();
+    }
+    
+    public Cursor getCursor(){
+        return this.c;
+    }
+    
+    public static int getCorrectRow(int r){
+        switch (r) {
+            case 0: r = 5;
+                return r; 
+             
+            case 1: r = 4;
+                return r; 
+             
+            case 2: r = 3;
+                return r; 
+             
+            case 3: r = 2;
+                return r; 
+             
+            case 4: r = 1;
+                return r; 
+             
+            case 5: r = 0;
+                return r; 
+        }
+        return -1;
+    }
+    
+    public Row getRow(int x){
+        return rows.get(x);
     }
 }

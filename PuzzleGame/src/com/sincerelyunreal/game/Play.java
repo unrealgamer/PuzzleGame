@@ -20,6 +20,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Play extends BasicGameState{
 
     Input in;
+    GameBoard Game;
     
     public Play(int id)
     {
@@ -30,23 +31,21 @@ public class Play extends BasicGameState{
     public int getID() {
         return 1;
     }
-
-    Grid gr;
     
     @Override
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-        gr = new Grid();
-        Tile.initSheet();
         in = gc.getInput();
+        Game = new GameBoard();
     }
 
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-        gr.DrawTiles();
+        Game.DrawGame();
     }
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+        Game.CheckInput(in);
     }
     
 }
