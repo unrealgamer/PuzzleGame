@@ -4,6 +4,8 @@
  */
 package com.sincerelyunreal.game;
 
+import static com.sincerelyunreal.game.PuzzleGame.menu;
+import static com.sincerelyunreal.game.PuzzleGame.play;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;

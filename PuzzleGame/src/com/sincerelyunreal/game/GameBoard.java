@@ -43,5 +43,6 @@ public class GameBoard {
         
         if(in.isKeyPressed(Input.KEY_SPACE))
             Row.swapTiles(gr.getCursor().getX(), gr.getRow(gr.getCursor().getY()));
+        
     }
 }

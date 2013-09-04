@@ -7,8 +7,6 @@ package com.sincerelyunreal.game.grid;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.SpriteSheet;
 
 /**
  *

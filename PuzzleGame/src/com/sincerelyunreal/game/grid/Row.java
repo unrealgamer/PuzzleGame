@@ -55,15 +55,17 @@ public class Row {
     }
 
     public boolean isMatch() {
-        int count = 2;
-        for (int i = 0; i < Grid.MAX_COLUMNS - 1; i++) {
-            if (count == 3) {
+        int count = 0;
+        for (int i = 0; i < Grid.MAX_COLUMNS; i++) {
+            if (count == 2) {
                 return true;
             }
+            if(i == 5)
+                break;
             if (tiles[i].getType().equals(tiles[i + 1].getType())) {
                 count++;
             } else {
-                count = 2;
+                count = 0;
             }
         }
         return false;

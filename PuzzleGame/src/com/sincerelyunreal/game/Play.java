@@ -4,8 +4,6 @@
  */
 package com.sincerelyunreal.game;
 
-import com.sincerelyunreal.game.grid.Grid;
-import com.sincerelyunreal.game.grid.Tile;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -46,6 +44,7 @@ public class Play extends BasicGameState{
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         Game.CheckInput(in);
+        if(in.isKeyPressed(Input.KEY_ESCAPE))
+            gc.exit();// make exit w/ escape
     }
-    
 }
