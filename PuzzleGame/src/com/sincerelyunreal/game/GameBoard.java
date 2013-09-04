@@ -30,7 +30,7 @@ public class GameBoard {
         gr.DrawTiles();
         gr.DrawCursor();
         border.startUse();
-        border.draw(400, 800);
+        border.draw(400, 800);//border needs to be fixed
         border.endUse();
         
     }
