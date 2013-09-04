@@ -17,9 +17,12 @@ public class Grid {
 
     public static final int MAX_COLUMNS = 6;
     public static final int INITIAL_ROWS = 6;
+    public static final int BORDER_WIDTH = 8;
+    public static final int BORDER_HEIGHT = 8;
     private ArrayList<Row> rows;
     private SpriteSheet sheet;
     private Cursor c;
+    private int displacement;
 
     public Grid(ArrayList<Row> rows) {
         this.rows = rows;
@@ -29,6 +32,7 @@ public class Grid {
         rows = new ArrayList<>();
         initializeGrid();
         c = new Cursor();
+        displacement = 264;
     }
 
     private void initializeGrid() {
@@ -41,8 +45,23 @@ public class Grid {
             rows.add(i, r);
         }
     }
-
+    
+    /**
+     * Shane, see if you can figure this out.
+     * I tried to do what you did earlier, check the two rows beneath the row 
+     * sent in for a match of three and if there is return it to be recreated.
+     * 
+     * The first for loop goes through the two rows beneath the row being passed
+     * in. The second goes through the column and checks each column for the
+     * same Tile type.
+     * 
+     * Writing Tile type lead to to find the error, so never mind.
+     * 
+     * @param newRow
+     * @return False if 3 are not found in a horizontal pattern
+     */
     private boolean checkForMatch(Row newRow) {
+        
         if (newRow.isMatch()) {
             return true;
         }
@@ -53,20 +72,17 @@ public class Grid {
 
         printGrid(newRow);
 
-        boolean foundMatch = false;
-        
+
+
         for (int y = rows.size() - 1; y != y - 1; y--) {
             for (int x = 0; x != MAX_COLUMNS; x++) {
                 if (newRow.getTile(x).getType().equals(rows.get(y).getTile(x).getType())) {
-                    foundMatch = true;
-                    if (newRow.getTile(x) == rows.get(y - 1).getTile(x)) {
+                    if (newRow.getTile(x).getType().equals(rows.get(y - 1).getTile(x).getType()))  {
                         return true;
                     }
                 }
             }
-            if(foundMatch)
-                foundMatch = false;
-                break;
+            break;
         }
 
 
@@ -105,7 +121,7 @@ public class Grid {
 
     public void DrawTiles() {
         for (int r = rows.size() - 1; r >= 0; r--) {
-            rows.get(r).draw(r);
+            rows.get(r).draw(r, displacement);
         }
     }
 
@@ -118,7 +134,7 @@ public class Grid {
     }
 
     public void DrawCursor() {
-        c.draw();
+        c.draw(displacement);
     }
 
     public Cursor getCursor() {
@@ -126,35 +142,19 @@ public class Grid {
     }
 
     public static int getCorrectRow(int r) {
-        switch (r) {
-            case 0:
-                r = 5;
-                return r;
-
-            case 1:
-                r = 4;
-                return r;
-
-            case 2:
-                r = 3;
-                return r;
-
-            case 3:
-                r = 2;
-                return r;
-
-            case 4:
-                r = 1;
-                return r;
-
-            case 5:
-                r = 0;
-                return r;
-        }
-        return -1;
+        r = 5 - r;
+        return r;
     }
 
     public Row getRow(int x) {
         return rows.get(x);
+    }
+    
+    public ArrayList<Row> getRow(){
+        return rows;
+    }
+
+    public int getDisplacement() {
+        return this.displacement;
     }
 }

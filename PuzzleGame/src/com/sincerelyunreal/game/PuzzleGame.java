@@ -34,7 +34,7 @@ public class PuzzleGame extends StateBasedGame {
         AppGameContainer appgc;
         try {
             appgc = new AppGameContainer(new PuzzleGame("654"));
-            appgc.setDisplayMode(384, 800, false);
+            appgc.setDisplayMode(400, 800, false);
             appgc.setShowFPS(true);
             appgc.start();
         } catch (SlickException e) {

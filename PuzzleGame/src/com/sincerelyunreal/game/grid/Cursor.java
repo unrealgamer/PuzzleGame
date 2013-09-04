@@ -29,9 +29,9 @@ public class Cursor {
         y = 2;
     }
     
-    public void draw(){
+    public void draw(int d){
         img.startUse();
-        img.drawEmbedded(x * 64, Grid.getCorrectRow(y) * 64, 128, 64);
+        img.drawEmbedded(x * 64 + Grid.BORDER_WIDTH, Grid.getCorrectRow(y) * 64 + Grid.BORDER_HEIGHT + d, 128, 64);
         img.endUse();
     }
     

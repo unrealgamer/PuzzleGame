@@ -71,7 +71,7 @@ public class Row {
         return false;
     }
 
-    public void draw(int r) {
+    public void draw(int r, int d) {
         if (Tile.TileSheet == null) {
             throw new NullPointerException("TileSheet has not been constructed");
         }
@@ -86,7 +86,7 @@ public class Row {
             tileCount++;
             int y = r * 64;
             Tile.TileSheet.startUse();
-            Tile.TileSheet.getSubImage(t.getType().ordinal(), 0).drawEmbedded(x, y, 64, 64);
+            Tile.TileSheet.getSubImage(t.getType().ordinal(), 0).drawEmbedded(x + Grid.BORDER_WIDTH, y + Grid.BORDER_HEIGHT + d, 64, 64);
             Tile.TileSheet.endUse();
         }
     }
