@@ -22,7 +22,7 @@ public class Grid {
     private ArrayList<Row> rows;
     private SpriteSheet sheet;
     private Cursor c;
-    private int displacement;
+    private float displacement;
 
     public Grid(ArrayList<Row> rows) {
         this.rows = rows;
@@ -159,7 +159,6 @@ public class Grid {
         for (int i = 0; i < Grid.MAX_COLUMNS; i++) {
             hor.add(rows.get(c.getY()).getTile(i));
         }
-
         removeMatches(checkThree(verL));
         removeMatches(checkThree(verR));
         removeMatches(checkThree(hor));
@@ -188,6 +187,10 @@ public class Grid {
         }
     }
 
+    public void moveUp(int delta){
+        displacement -= (float)delta / 1000f;
+    }
+    
     public void DrawCursor() {
         c.draw(displacement);
     }
@@ -209,7 +212,7 @@ public class Grid {
         return rows;
     }
 
-    public int getDisplacement() {
+    public float getDisplacement() {
         return displacement;
     }
 }

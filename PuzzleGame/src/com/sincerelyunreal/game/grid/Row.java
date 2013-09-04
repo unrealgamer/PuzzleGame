@@ -75,7 +75,7 @@ public class Row {
         return false;
     }
 
-    public void draw(int r, int d) {
+    public void draw(int r, float d) {
         if (Tile.TileSheet == null) {
             throw new NullPointerException("TileSheet has not been constructed");
         }

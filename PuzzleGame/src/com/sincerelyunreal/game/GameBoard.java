@@ -35,6 +35,10 @@ public class GameBoard {
         
     }
 
+    public void UpdateGame(int delta){
+        gr.moveUp(delta);
+    }
+    
     public void CheckInput(Input in) {
         if (in.isKeyPressed(Input.KEY_LEFT) || in.isKeyPressed(Input.KEY_A)) {
             if (gr.getCursor().getX() >= 1) {

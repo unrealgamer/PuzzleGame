@@ -33,7 +33,7 @@ public class PuzzleGame extends StateBasedGame {
     public static void main(String[] args) {
         AppGameContainer appgc;
         try {
-            appgc = new AppGameContainer(new PuzzleGame("654"));
+            appgc = new AppGameContainer(new PuzzleGame(gameName));
             appgc.setDisplayMode(400, 800, false);
             appgc.setShowFPS(true);
             appgc.start();

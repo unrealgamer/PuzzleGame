@@ -44,6 +44,7 @@ public class Play extends BasicGameState{
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         Game.CheckInput(in);
+        Game.UpdateGame(delta);
         if(in.isKeyPressed(Input.KEY_ESCAPE))
             gc.exit();// make exit w/ escape
     }
