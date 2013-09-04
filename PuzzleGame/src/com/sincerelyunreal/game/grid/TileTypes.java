@@ -18,7 +18,8 @@ public enum TileTypes {
     YELLOW,
     GREEN,
     BLUE,
-    PURPLE;
+    PURPLE,
+    NULL;
     
     
     

@@ -44,48 +44,43 @@ public class Grid {
             }
             rows.add(i, r);
         }
+        assignLocations();
     }
-    
+
     /**
-     * Shane, see if you can figure this out.
-     * I tried to do what you did earlier, check the two rows beneath the row 
-     * sent in for a match of three and if there is return it to be recreated.
-     * 
+     * Shane, see if you can figure this out. I tried to do what you did
+     * earlier, check the two rows beneath the row sent in for a match of three
+     * and if there is return it to be recreated.
+     *
      * The first for loop goes through the two rows beneath the row being passed
      * in. The second goes through the column and checks each column for the
      * same Tile type.
-     * 
+     *
      * Writing Tile type lead to to find the error, so never mind.
-     * 
+     *
+     *
+     *
      * @param newRow
      * @return False if 3 are not found in a horizontal pattern
      */
     private boolean checkForMatch(Row newRow) {
-        
         if (newRow.isMatch()) {
             return true;
         }
-
         if (rows.size() < 2) {
             return false;
         }
-
         printGrid(newRow);
-
-
-
         for (int y = rows.size() - 1; y != y - 1; y--) {
             for (int x = 0; x != MAX_COLUMNS; x++) {
                 if (newRow.getTile(x).getType().equals(rows.get(y).getTile(x).getType())) {
-                    if (newRow.getTile(x).getType().equals(rows.get(y - 1).getTile(x).getType()))  {
+                    if (newRow.getTile(x).getType().equals(rows.get(y - 1).getTile(x).getType())) {
                         return true;
                     }
                 }
             }
             break;
         }
-
-
         return false;
 
         /*
@@ -119,6 +114,66 @@ public class Grid {
          }         */
     }
 
+    private void assignLocations() {
+        for (int y = 0; y < rows.size(); y++) {
+            for (int x = 0; x < MAX_COLUMNS; x++) {
+                rows.get(y).getTile(x).setX(x);
+                rows.get(y).getTile(x).setY(y);
+            }
+        }
+    }
+    //==========================================================================
+
+    private ArrayList<Tile> checkThree(ArrayList<Tile> row) {
+        int count = 0;
+        ArrayList<Tile> rGroup = new ArrayList<>();
+        for (int i = 0; i < row.size() - 1; i++) {
+            if (row.get(i).getType().equals(row.get(i + 1).getType()) && !row.get(i).getType().equals(TileTypes.NULL)) {
+                count++;
+            } else {
+                count = 0;
+            }
+            if (count == 2) {
+                rGroup.add(row.get(i - 1));
+                rGroup.add(row.get(i));
+                rGroup.add(row.get(i + 1));
+            } else if (count > 2) {
+                rGroup.add(row.get(i + 1));
+            }
+        }
+        return rGroup;
+    }
+
+    public void checkForMatches() {
+        //needs some fine tuning
+        
+        ArrayList<Tile> verL = new ArrayList<>();
+        ArrayList<Tile> verR = new ArrayList<>();
+        ArrayList<Tile> hor = new ArrayList<>();
+        for (int i = 0; i < rows.size(); i++) {
+            verL.add(rows.get(i).getTile(c.getX()));
+        }
+        for (int i = 0; i < rows.size(); i++) {
+            verR.add(rows.get(i).getTile(c.getX() + 1));
+        }
+        for (int i = 0; i < Grid.MAX_COLUMNS; i++) {
+            hor.add(rows.get(c.getY()).getTile(i));
+        }
+
+        removeMatches(checkThree(verL));
+        removeMatches(checkThree(verR));
+        removeMatches(checkThree(hor));
+    }
+
+    private void removeMatches(ArrayList<Tile> group) {
+        for (int i = 0; i <= group.size(); i++) {
+            //rows.get(group.get(i).getY()).setTile(group.get(i).getX());
+            //rows.get(group.get(i).getY()).setTile(group.get(i).getX(), new Tile(TileTypes.NULL));
+            //grid[group.get(i).getLoc().y][group.get(i).getLoc().x].setID(6);
+        }
+    }
+    //==========================================================================
+
     public void DrawTiles() {
         for (int r = rows.size() - 1; r >= 0; r--) {
             rows.get(r).draw(r, displacement);
@@ -149,12 +204,12 @@ public class Grid {
     public Row getRow(int x) {
         return rows.get(x);
     }
-    
-    public ArrayList<Row> getRow(){
+
+    public ArrayList<Row> getRow() {
         return rows;
     }
 
     public int getDisplacement() {
-        return this.displacement;
+        return displacement;
     }
 }

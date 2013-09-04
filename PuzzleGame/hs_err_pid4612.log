@@ -1,0 +1,476 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x000000006606c618, pid=4612, tid=6012
+#
+# JRE version: 7.0_25-b16
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (23.25-b01 mixed mode windows-amd64 compressed oops)
+# Problematic frame:
+# V  [jvm.dll+0x7c618]
+#
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000000233f000):  JavaThread "main" [_thread_in_vm, id=6012, stack(0x00000000024f0000,0x00000000025f0000)]
+
+siginfo: ExceptionCode=0xc0000005, reading address 0x0000000000000000
+
+Registers:
+RAX=0x0000a99d156c4cd8, RBX=0x00000000021e7ff8, RCX=0x00000000025ef468, RDX=0x0000000000000000
+RSP=0x00000000025ef0b0, RBP=0x000000000233f000, RSI=0x00000000025ef468, RDI=0x0000000000000000
+R8 =0x0000000000000000, R9 =0x0000000000000000, R10=0x00000000be5a60f8, R11=0x00000000000000ca
+R12=0x0000000000000000, R13=0x000000000233f000, R14=0x00000000025ef4d8, R15=0x00000000000000ca
+RIP=0x000000006606c618, EFLAGS=0x0000000000010206
+
+Top of Stack: (sp=0x00000000025ef0b0)
+0x00000000025ef0b0:   000000006fc2b560 000000006fc20df8
+0x00000000025ef0c0:   0000000008cadbf8 000000000233f1d8
+0x00000000025ef0d0:   000000000233d770 000000006619df92
+0x00000000025ef0e0:   000000000233f000 000000000233f000
+0x00000000025ef0f0:   000000000233f000 0000000000000000
+0x00000000025ef100:   0000000008ca0cd0 000000006614f1f3
+0x00000000025ef110:   0000000000000000 0000000008ca9cc0
+0x00000000025ef120:   0000000008ca9cc0 000000006613656a
+0x00000000025ef130:   0000000000000000 000000006614f564
+0x00000000025ef140:   0000000000000004 000000000233f000
+0x00000000025ef150:   00000000ebb64860 0000000066136837
+0x00000000025ef160:   000000000233f000 0000000066139ad9
+0x00000000025ef170:   0000000000000004 0000000008ca9cc0
+0x00000000025ef180:   000000006fc2fbb0 000000006fc1b633
+0x00000000025ef190:   00000000022a3f90 000000006fc20df8
+0x00000000025ef1a0:   0000000000000001 0000000008cadbd0 
+
+Instructions: (pc=0x000000006606c618)
+0x000000006606c5f8:   57 41 54 41 56 41 57 48 81 ec 70 01 00 00 48 8b
+0x000000006606c608:   05 93 6d 60 00 48 33 c4 48 89 84 24 50 01 00 00
+0x000000006606c618:   48 8b 02 48 8b ac 24 e0 01 00 00 4d 8b f1 8b 80
+0x000000006606c628:   9c 00 00 00 4d 8b f8 48 8b d9 c1 e8 09 a8 01 0f 
+
+
+Register to memory mapping:
+
+RAX=0x0000a99d156c4cd8 is an unknown value
+RBX=0x00000000021e7ff8 is an unknown value
+RCX=0x00000000025ef468 is pointing into the stack for thread: 0x000000000233f000
+RDX=0x0000000000000000 is an unknown value
+RSP=0x00000000025ef0b0 is pointing into the stack for thread: 0x000000000233f000
+RBP=0x000000000233f000 is a thread
+RSI=0x00000000025ef468 is pointing into the stack for thread: 0x000000000233f000
+RDI=0x0000000000000000 is an unknown value
+R8 =0x0000000000000000 is an unknown value
+R9 =0x0000000000000000 is an unknown value
+R10=0x00000000be5a60f8 is an oop
+{constant pool} 
+ - klass: {other class}
+ - holder: 0x00000000be580ed0
+ - cache: 0x00000000be5a9118
+ -   1 :  : klass_index=46 name_and_type_index=126
+ -   2 :  : klass_index=45 name_and_type_index=127
+ -   3 :  : 'java/util/ArrayList' {0xbe0e3c50}
+ -   4 :  : klass_index=3 name_and_type_index=126
+ -   5 :  : klass_index=45 name_and_type_index=129
+ -   6 :  : 'com/sincerelyunreal/game/grid/Cursor' {0xbe5855f8}
+ -   7 :  : klass_index=6 name_and_type_index=126
+ -   8 :  : klass_index=45 name_and_type_index=131
+ -   9 :  : klass_index=45 name_and_type_index=132
+ -  10 :  : 'com/sincerelyunreal/game/grid/Row' {0xbe582910}
+ -  11 :  : klass_index=10 name_and_type_index=126
+ -  12 :  : klass_index=10 name_and_type_index=134
+ -  13 :  : klass_index=45 name_and_type_index=135
+ -  14 :  : klass_index=3 name_and_type_index=136
+ -  15 :  : klass_index=10 name_and_type_index=137
+ -  16 :  : klass_index=3 name_and_type_index=138
+ -  17 :  : klass_index=45 name_and_type_index=139
+ -  18 :  : klass_index=10 name_and_type_index=140
+ -  19 :  : klass_index=22 name_and_type_index=141
+ -  20 :  : klass_index=3 name_and_type_index=142
+ -  21 :  : klass_index=143 name_and_type_index=144
+ -  22 :  : 'com/sincerelyunreal/game/grid/Tile' {0xbe5833e8}
+ -  23 :  : klass_index=143 name_and_type_index=146
+ -  24 :  : klass_index=3 name_and_type_index=147
+ -  25 :  : klass_index=6 name_and_type_index=148
+ -  26 :  : klass_index=22 name_and_type_index=149
+ -  27 :  : klass_index=6 name_and_type_index=150
+ -  28 :  : klass_index=45 name_and_type_index=151
+ -  29 :  : klass_index=45 name_and_type_index=152
+ -  30 :  : klass_index=45 name_and_type_index=153
+ -  31 :  : klass_index=10 name_and_type_index=154
+ -  32 :  : 'java/lang/Exception'
+ -  33 :  : klass_index=10 name_and_type_index=156
+ -  34 :  : klass_index=157 name_and_type_index=158
+ -  35 :  : "Grid
+" {0xec0956d0}
+ -  36 :  : klass_index=160 name_and_type_index=161
+ -  37 :  : 'java/lang/StringBuilder'
+ -  38 :  : klass_index=37 name_and_type_index=126
+ -  39 :  : klass_index=37 name_and_type_index=163
+ -  40 :  : " " {0xebd57af8}
+ -  41 :  : klass_index=37 name_and_type_index=165
+ -  42 :  : klass_index=37 name_and_type_index=166
+ -  43 :  : klass_index=37 name_and_type_index=167
+ -  44 :  : klass_index=6 name_and_type_index=168
+ -  45 :  : 'com/sincerelyunreal/game/grid/Grid' {0xbe580ed0}
+ -  46 :  : 'java/lang/Object'
+ -  47 :  : 'MAX_COLUMNS'
+ -  48 :  : 'I'
+ -  49 :  : 'ConstantValue'
+ -  50 :  : 6
+ -  51 :  : 'INITIAL_ROWS'
+ -  52 :  : 'BORDER_WIDTH'
+ -  53 :  : 8
+ -  54 :  : 'BORDER_HEIGHT'
+ -  55 :  : 'rows'
+ -  56 :  : 'Ljava/util/ArrayList;'
+ -  57 :  : 'Signature'
+ -  58 :  : 'Ljava/util/ArrayList<Lcom/sincerelyunreal/game/grid/Row;>;'
+ -  59 :  : 'sheet'
+ -  60 :  : 'Lorg/newdawn/slick/SpriteSheet;'
+ -  61 :  : 'c'
+ -  62 :  : 'Lcom/sincerelyunreal/game/grid/Cursor;'
+ -  63 :  : 'displacement'
+ -  64 :  : '<init>'
+ -  65 :  : '(Ljava/util/ArrayList;)V'
+ -  66 :  : 'Code'
+ -  67 :  : 'LineNumberTable'
+ -  68 :  : 'LocalVariableTable'
+ -  69 :  : 'this'
+ -  70 :  : 'Lcom/sincerelyunreal/game/grid/Grid;'
+ -  71 :  : 'LocalVariableTypeTable'
+ -  72 :  : '(Ljava/util/ArrayList<Lcom/sincerelyunreal/game/grid/Row;>;)V'
+ -  73 :  : '()V'
+ -  74 :  : 'initializeGrid'
+ -  75 :  : 'r'
+ -  76 :  : 'Lcom/sincerelyunreal/game/grid/Row;'
+ -  77 :  : 'i'
+ -  78 :  : 'StackMapTable'
+ -  79 :  : 'com/sincerelyunreal/game/grid/Row'
+ -  80 :  : 'checkForMatch'
+ -  81 :  : '(Lcom/sincerelyunreal/game/grid/Row;)Z'
+ -  82 :  : 'x'
+ -  83 :  : 'y'
+ -  84 :  : 'newRow'
+ -  85 :  : 'checkThree'
+ -  86 :  : '(Ljava/util/ArrayList;)Ljava/util/ArrayList;'
+ -  87 :  : 'row'
+ -  88 :  : 'count'
+ -  89 :  : 'rGroup'
+ -  90 :  : 'Ljava/util/ArrayList<Lcom/sincerelyunreal/game/grid/Tile;>;'
+ -  91 :  : 'java/util/ArrayList'
+ -  92 :  : '(Ljava/util/ArrayList<Lcom/sincerelyunreal/game/grid/Tile;>;)Ljava/util/ArrayList<Lcom/sincerelyunreal/game/grid/Tile;>;'
+ -  93 :  : 'checkForMatches'
+ -  94 :  : 'verL'
+ -  95 :  : 'verR'
+ -  96 :  : 'hor'
+ -  97 :  : 'com/sincerelyunreal/game/grid/Grid'
+ -  98 :  : 'removeMatches'
+ -  99 :  : '(Ljava/util/ArrayList;II)V'
+ - 100 :  : 'e'
+ - 101 :  : 'Ljava/lang/Exception;'
+ - 102 :  : 'group'
+ - 103 :  : 'n'
+ - 104 :  : 'start'
+ - 105 :  : 'java/lang/Exception'
+ - 106 :  : '(Ljava/util/ArrayList<Lcom/sincerelyunreal/game/grid/Tile;>;II)V'
+ - 107 :  : 'getStart'
+ - 108 :  : '(Ljava/util/ArrayList;)I'
+ - 109 :  : '(Ljava/util/ArrayList<Lcom/sincerelyunreal/game/grid/Tile;>;)I'
+ - 110 :  : 'DrawTiles'
+ - 111 :  : 'printGrid'
+ - 112 :  : '(Lcom/sincerelyunreal/game/grid/Row;)V'
+ - 113 :  : 'DrawCursor'
+ - 114 :  : 'getCursor'
+ - 115 :  : '()Lcom/sincerelyunreal/game/grid/Cursor;'
+ - 116 :  : 'getCorrectRow'
+ - 117 :  : '(I)I'
+ - 118 :  : 'getRow'
+ - 119 :  : '(I)Lcom/sincerelyunreal/game/grid/Row;'
+ - 120 :  : '()Ljava/util/ArrayList;'
+ - 121 :  : '()Ljava/util/ArrayList<Lcom/sincerelyunreal/game/grid/Row;>;'
+ - 122 :  : 'getDisplacement'
+ - 123 :  : '()I'
+ - 124 :  : 'SourceFile'
+ - 125 :  : 'Grid.java'
+ - 126 :  : name_index=64 signature_index=73
+ - 127 :  : name_index=55 signature_index=56
+ - 128 :  : 'java/util/ArrayList'
+ - 129 :  : name_index=74 signature_index=73
+ - 130 :  : 'com/sincerelyunreal/game/grid/Cursor'
+ - 131 :  : name_index=61 signature_index=62
+ - 132 :  : name_index=63 signature_index=48
+ - 133 :  : 'com/sincerelyunreal/game/grid/Row'
+ - 134 :  : name_index=171 signature_index=73
+ - 135 :  : name_index=80 signature_index=81
+ - 136 :  : name_index=172 signature_index=173
+ - 137 :  : name_index=174 signature_index=175
+ - 138 :  : name_index=176 signature_index=123
+ - 139 :  : name_index=111 signature_index=112
+ - 140 :  : name_index=177 signature_index=178
+ - 141 :  : name_index=179 signature_index=180
+ - 142 :  : name_index=181 signature_index=182
+ - 143 :  : 'com/sincerelyunreal/game/grid/TileTypes' {0xbe584438}
+ - 144 :  : name_index=184 signature_index=185
+ - 145 :  : 'com/sincerelyunreal/game/grid/Tile'
+ - 146 :  : name_index=186 signature_index=187
+ - 147 :  : name_index=172 signature_index=185
+ - 148 :  : name_index=188 signature_index=123
+ - 149 :  : name_index=64 signature_index=189
+ - 150 :  : name_index=190 signature_index=123
+ - 151 :  : name_index=85 signature_index=86
+ - 152 :  : name_index=107 signature_index=108
+ - 153 :  : name_index=98 signature_index=99
+ - 154 :  : name_index=191 signature_index=192
+ - 155 :  : 'java/lang/Exception'
+ - 156 :  : name_index=193 signature_index=194
+ - 157 :  : 'java/lang/System'
+ - 158 :  : name_index=196 signature_index=197
+ - 159 :  : 'Grid
+'
+ - 160 :  : 'java/io/PrintStream'
+ - 161 :  : name_index=199 signature_index=200
+ - 162 :  : 'java/lang/StringBuilder'
+ - 163 :  : name_index=201 signature_index=202
+ - 164 :  : ' '
+ - 165 :  : name_index=201 signature_index=203
+ - 166 :  : name_index=201 signature_index=204
+ - 167 :  : name_index=205 signature_index=206
+ - 168 :  : name_index=193 signature_index=207
+ - 169 :  : 'com/sincerelyunreal/game/grid/Grid'
+ - 170 :  : 'java/lang/Object'
+ - 171 :  : 'generateRow'
+ - 172 :  : 'add'
+ - 173 :  : '(ILjava/lang/Object;)V'
+ - 174 :  : 'isMatch'
+ - 175 :  : '()Z'
+ - 176 :  : 'size'
+ - 177 :  : 'getTile'
+ - 178 :  : '(I)Lcom/sincerelyunreal/game/grid/Tile;'
+ - 179 :  : 'getType'
+ - 180 :  : '()Lcom/sincerelyunreal/game/grid/TileTypes;'
+ - 181 :  : 'get'
+ - 182 :  : '(I)Ljava/lang/Object;'
+ - 183 :  : 'com/sincerelyunreal/game/grid/TileTypes'
+ - 184 :  : 'equals'
+ - 185 :  : '(Ljava/lang/Object;)Z'
+ - 186 :  : 'NULL'
+ - 187 :  : 'Lcom/sincerelyunreal/game/grid/TileTypes;'
+ - 188 :  : 'getX'
+ - 189 :  : '(Lcom/sincerelyunreal/game/grid/TileTypes;)V'
+ - 190 :  : 'getY'
+ - 191 :  : 'setTile'
+ - 192 :  : '(ILcom/sincerelyunreal/game/grid/Tile;)V'
+ - 193 :  : 'draw'
+ - 194 :  : '(II)V'
+ - 195 :  : 'java/lang/System'
+ - 196 :  : 'out'
+ - 197 :  : 'Ljava/io/PrintStream;'
+ - 198 :  : 'java/io/PrintStream'
+ - 199 :  : 'println'
+ - 200 :  : '(Ljava/lang/String;)V'
+ - 201 :  : 'append'
+ - 202 :  : '(I)Ljava/lang/StringBuilder;'
+ - 203 :  : '(Ljava/lang/String;)Ljava/lang/StringBuilder;'
+ - 204 :  : '(Ljava/lang/Object;)Ljava/lang/StringBuilder;'
+ - 205 :  : 'toString'
+ - 206 :  : '()Ljava/lang/String;'
+ - 207 :  : '(I)V'
+
+R11=0x00000000000000ca is an unknown value
+R12=0x0000000000000000 is an unknown value
+R13=0x000000000233f000 is a thread
+R14=0x00000000025ef4d8 is pointing into the stack for thread: 0x000000000233f000
+R15=0x00000000000000ca is an unknown value
+
+
+Stack: [0x00000000024f0000,0x00000000025f0000],  sp=0x00000000025ef0b0,  free space=1020k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x7c618]
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  com.sincerelyunreal.game.grid.Grid.removeMatches(Ljava/util/ArrayList;II)V+107
+j  com.sincerelyunreal.game.grid.Grid.checkForMatches()V+222
+j  com.sincerelyunreal.game.GameBoard.CheckInput(Lorg/newdawn/slick/Input;)V+283
+j  com.sincerelyunreal.game.Play.update(Lorg/newdawn/slick/GameContainer;Lorg/newdawn/slick/state/StateBasedGame;I)V+8
+J  org.newdawn.slick.GameContainer.updateAndRender(I)V
+J  org.newdawn.slick.AppGameContainer.gameLoop()V
+j  org.newdawn.slick.AppGameContainer.start()V+17
+j  com.sincerelyunreal.game.PuzzleGame.main([Ljava/lang/String;)V+34
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0000000008cc3000 JavaThread "Service Thread" daemon [_thread_blocked, id=2624, stack(0x000000000a840000,0x000000000a940000)]
+  0x0000000008cc1000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=4276, stack(0x000000000a940000,0x000000000aa40000)]
+  0x0000000008cbb800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=4080, stack(0x000000000a720000,0x000000000a820000)]
+  0x0000000008caf000 JavaThread "JDWP Command Reader" daemon [_thread_in_native, id=5944, stack(0x000000000a560000,0x000000000a660000)]
+  0x0000000008cae000 JavaThread "JDWP Event Helper Thread" daemon [_thread_blocked, id=3172, stack(0x000000000a3b0000,0x000000000a4b0000)]
+  0x0000000008ca1800 JavaThread "JDWP Transport Listener: dt_shmem" daemon [_thread_blocked, id=5236, stack(0x000000000a170000,0x000000000a270000)]
+  0x0000000008c9b800 JavaThread "Attach Listener" daemon [_thread_blocked, id=868, stack(0x000000000a020000,0x000000000a120000)]
+  0x0000000008c94800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=2860, stack(0x0000000009c10000,0x0000000009d10000)]
+  0x00000000022ac000 JavaThread "Finalizer" daemon [_thread_blocked, id=5936, stack(0x0000000009ef0000,0x0000000009ff0000)]
+  0x00000000022a4800 JavaThread "Reference Handler" daemon [_thread_blocked, id=5392, stack(0x0000000009d50000,0x0000000009e50000)]
+=>0x000000000233f000 JavaThread "main" [_thread_in_vm, id=6012, stack(0x00000000024f0000,0x00000000025f0000)]
+
+Other Threads:
+  0x0000000008c12000 VMThread [stack: 0x0000000009b00000,0x0000000009c00000] [id=2664]
+  0x0000000008cd7800 WatcherThread [stack: 0x000000000aaf0000,0x000000000abf0000] [id=212]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 18176K, used 8800K [0x00000000ebb60000, 0x00000000ecfa0000, 0x0000000100000000)
+  eden space 15616K, 56% used [0x00000000ebb60000,0x00000000ec3f8070,0x00000000ecaa0000)
+  from space 2560K, 0% used [0x00000000ecd20000,0x00000000ecd20000,0x00000000ecfa0000)
+  to   space 2560K, 0% used [0x00000000ecaa0000,0x00000000ecaa0000,0x00000000ecd20000)
+ ParOldGen       total 41536K, used 0K [0x00000000c3200000, 0x00000000c5a90000, 0x00000000ebb60000)
+  object space 41536K, 0% used [0x00000000c3200000,0x00000000c3200000,0x00000000c5a90000)
+ PSPermGen       total 21248K, used 5797K [0x00000000be000000, 0x00000000bf4c0000, 0x00000000c3200000)
+  object space 21248K, 27% used [0x00000000be000000,0x00000000be5a95b8,0x00000000bf4c0000)
+
+Card table byte_map: [0x00000000055f0000,0x0000000005810000] byte_map_base: 0x0000000005000000
+
+Polling page: 0x0000000000130000
+
+Code Cache  [0x00000000025f0000, 0x0000000002860000, 0x00000000055f0000)
+ total_blobs=555 nmethods=211 adapters=303 free_code_cache=48117Kb largest_free_block=49214272
+
+Compilation events (10 events):
+Event: 7.132 Thread 0x0000000008cbb800 nmethod 205 0x00000000026d3ad0 code [0x00000000026d3c20, 0x00000000026d3e98]
+Event: 7.132 Thread 0x0000000008cbb800  206             java.util.ArrayList::rangeCheck (22 bytes)
+Event: 7.133 Thread 0x0000000008cbb800 nmethod 206 0x00000000026d3890 code [0x00000000026d39c0, 0x00000000026d3a38]
+Event: 7.133 Thread 0x0000000008cbb800  207             java.util.ArrayList::elementData (7 bytes)
+Event: 7.133 Thread 0x0000000008cbb800 nmethod 207 0x00000000026d35d0 code [0x00000000026d3700, 0x00000000026d37b8]
+Event: 7.133 Thread 0x0000000008cbb800  208             java.util.ArrayList::get (11 bytes)
+Event: 7.134 Thread 0x0000000008cbb800 nmethod 208 0x00000000026d3250 code [0x00000000026d33a0, 0x00000000026d3498]
+Event: 7.134 Thread 0x0000000008cbb800  209             com.sincerelyunreal.game.grid.Grid::DrawTiles (40 bytes)
+Event: 7.136 Thread 0x0000000008cbb800 nmethod 209 0x00000000026d73d0 code [0x00000000026d7520, 0x00000000026d7708]
+Event: 7.202 Thread 0x0000000008cc1000 nmethod 186 0x00000000026ed610 code [0x00000000026ede80, 0x00000000026f4540]
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (8 events):
+Event: 3.433 Thread 0x000000000233f000 Uncommon trap -34 fr.pc 0x000000000267c0b0
+Event: 3.438 Thread 0x000000000233f000 Uncommon trap -34 fr.pc 0x000000000267c0b0
+Event: 3.439 Thread 0x000000000233f000 Uncommon trap -34 fr.pc 0x000000000267c0b0
+Event: 3.439 Thread 0x000000000233f000 Uncommon trap -34 fr.pc 0x000000000267c0b0
+Event: 3.439 Thread 0x000000000233f000 Uncommon trap -83 fr.pc 0x000000000269deb0
+Event: 3.440 Thread 0x000000000233f000 Uncommon trap -83 fr.pc 0x0000000002697afc
+Event: 3.440 Thread 0x000000000233f000 Uncommon trap -83 fr.pc 0x000000000267d6fc
+Event: 3.440 Thread 0x000000000233f000 Uncommon trap -83 fr.pc 0x0000000002681f14
+
+Internal exceptions (10 events):
+Event: 0.407 Thread 0x000000000233f000 Threw 0x00000000ec090bf0 at C:\jdk7u2_64p\jdk7u25\hotspot\src\share\vm\prims\jvm.cpp:1235
+Event: 0.408 Thread 0x000000000233f000 Threw 0x00000000ec092b20 at C:\jdk7u2_64p\jdk7u25\hotspot\src\share\vm\prims\jvm.cpp:1235
+Event: 0.410 Thread 0x000000000233f000 Threw 0x00000000ec0a0728 at C:\jdk7u2_64p\jdk7u25\hotspot\src\share\vm\prims\jvm.cpp:1235
+Event: 0.422 Thread 0x000000000233f000 Threw 0x00000000ec0b14d0 at C:\jdk7u2_64p\jdk7u25\hotspot\src\share\vm\prims\jvm.cpp:1235
+Event: 0.423 Thread 0x000000000233f000 Threw 0x00000000ec0bdb40 at C:\jdk7u2_64p\jdk7u25\hotspot\src\share\vm\prims\jvm.cpp:1235
+Event: 0.426 Thread 0x000000000233f000 Threw 0x00000000ec0d51e0 at C:\jdk7u2_64p\jdk7u25\hotspot\src\share\vm\prims\jvm.cpp:1235
+Event: 0.427 Thread 0x000000000233f000 Threw 0x00000000ec0db670 at C:\jdk7u2_64p\jdk7u25\hotspot\src\share\vm\prims\jvm.cpp:1235
+Event: 3.433 Thread 0x000000000233f000 Threw 0x00000000ec278a20 at C:\jdk7u2_64p\jdk7u25\hotspot\src\share\vm\prims\jvm.cpp:1235
+Event: 3.438 Thread 0x000000000233f000 Threw 0x00000000ec282150 at C:\jdk7u2_64p\jdk7u25\hotspot\src\share\vm\prims\jvm.cpp:1235
+Event: 3.438 Thread 0x000000000233f000 Threw 0x00000000ec285678 at C:\jdk7u2_64p\jdk7u25\hotspot\src\share\vm\prims\jvm.cpp:1235
+
+Events (10 events):
+Event: 273.216 Executing VM operation: GetCurrentLocation
+Event: 273.216 Executing VM operation: GetCurrentLocation done
+Event: 273.216 Executing VM operation: ChangeSingleStep
+Event: 273.216 Executing VM operation: ChangeSingleStep done
+Event: 273.216 Executing VM operation: ChangeSingleStep
+Event: 273.216 Executing VM operation: ChangeSingleStep done
+Event: 273.216 Executing VM operation: GetCurrentLocation
+Event: 273.216 Executing VM operation: GetCurrentLocation done
+Event: 273.216 Executing VM operation: ChangeSingleStep
+Event: 273.216 Executing VM operation: ChangeSingleStep done
+
+
+Dynamic libraries:
+0x000000013f580000 - 0x000000013f5b3000 	C:\Program Files\Java\jdk1.7.0_25\jre\bin\java.exe
+0x0000000077b00000 - 0x0000000077ca9000 	C:\windows\SYSTEM32\ntdll.dll
+0x00000000779e0000 - 0x0000000077aff000 	C:\windows\system32\kernel32.dll
+0x000007fefe0b0000 - 0x000007fefe11b000 	C:\windows\system32\KERNELBASE.dll
+0x000007feff540000 - 0x000007feff61b000 	C:\windows\system32\ADVAPI32.dll
+0x000007feffbf0000 - 0x000007feffc8f000 	C:\windows\system32\msvcrt.dll
+0x000007feff770000 - 0x000007feff78f000 	C:\windows\SYSTEM32\sechost.dll
+0x000007fefe330000 - 0x000007fefe45d000 	C:\windows\system32\RPCRT4.dll
+0x00000000778e0000 - 0x00000000779da000 	C:\windows\system32\USER32.dll
+0x000007fefe460000 - 0x000007fefe4c7000 	C:\windows\system32\GDI32.dll
+0x000007feff620000 - 0x000007feff62e000 	C:\windows\system32\LPK.dll
+0x000007feffd40000 - 0x000007feffe09000 	C:\windows\system32\USP10.dll
+0x000007fefc980000 - 0x000007fefcb74000 	C:\windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_fa396087175ac9ac\COMCTL32.dll
+0x000007feffcc0000 - 0x000007feffd31000 	C:\windows\system32\SHLWAPI.dll
+0x000007feffc90000 - 0x000007feffcbe000 	C:\windows\system32\IMM32.DLL
+0x000007feffae0000 - 0x000007feffbe9000 	C:\windows\system32\MSCTF.dll
+0x000000006b060000 - 0x000000006b131000 	C:\Program Files\Java\jdk1.7.0_25\jre\bin\msvcr100.dll
+0x0000000065ff0000 - 0x00000000666ff000 	C:\Program Files\Java\jdk1.7.0_25\jre\bin\server\jvm.dll
+0x000007fef93e0000 - 0x000007fef93e9000 	C:\windows\system32\WSOCK32.dll
+0x000007feffa90000 - 0x000007feffadd000 	C:\windows\system32\WS2_32.dll
+0x000007feff870000 - 0x000007feff878000 	C:\windows\system32\NSI.dll
+0x000007fefbee0000 - 0x000007fefbf1b000 	C:\windows\system32\WINMM.dll
+0x0000000077cd0000 - 0x0000000077cd7000 	C:\windows\system32\PSAPI.DLL
+0x0000000074df0000 - 0x0000000074dff000 	C:\Program Files\Java\jdk1.7.0_25\jre\bin\verify.dll
+0x000000006b360000 - 0x000000006b388000 	C:\Program Files\Java\jdk1.7.0_25\jre\bin\java.dll
+0x000000006fc00000 - 0x000000006fc35000 	C:\Program Files\Java\jdk1.7.0_25\jre\bin\jdwp.dll
+0x0000000070ff0000 - 0x0000000070ff8000 	C:\Program Files\Java\jdk1.7.0_25\jre\bin\npt.dll
+0x00000000750e0000 - 0x00000000750f5000 	C:\Program Files\Java\jdk1.7.0_25\jre\bin\zip.dll
+0x0000000071000000 - 0x000000007100b000 	C:\Program Files\Java\jdk1.7.0_25\jre\bin\dt_shmem.dll
+0x0000000180000000 - 0x0000000180050000 	C:\LWJGL\natives\windows\lwjgl64.dll
+0x000007fef4200000 - 0x000007fef431d000 	C:\windows\system32\OPENGL32.dll
+0x000007fef5db0000 - 0x000007fef5ddd000 	C:\windows\system32\GLU32.dll
+0x000007fef29a0000 - 0x000007fef2a91000 	C:\windows\system32\DDRAW.dll
+0x000007fefb9e0000 - 0x000007fefb9e8000 	C:\windows\system32\DCIMAN32.dll
+0x000007feff260000 - 0x000007feff437000 	C:\windows\system32\SETUPAPI.dll
+0x000007fefe010000 - 0x000007fefe046000 	C:\windows\system32\CFGMGR32.dll
+0x000007feff790000 - 0x000007feff867000 	C:\windows\system32\OLEAUT32.dll
+0x000007feff880000 - 0x000007feffa83000 	C:\windows\system32\ole32.dll
+0x000007fefe050000 - 0x000007fefe06a000 	C:\windows\system32\DEVOBJ.dll
+0x000007fefc1f0000 - 0x000007fefc208000 	C:\windows\system32\dwmapi.dll
+0x000007fefd040000 - 0x000007fefd04c000 	C:\windows\system32\VERSION.dll
+0x0000000074e40000 - 0x0000000074e59000 	C:\Program Files\Java\jdk1.7.0_25\jre\bin\net.dll
+0x000007fefd790000 - 0x000007fefd7e5000 	C:\windows\system32\mswsock.dll
+0x000007fefd780000 - 0x000007fefd787000 	C:\windows\System32\wship6.dll
+0x0000000074dd0000 - 0x0000000074de1000 	C:\Program Files\Java\jdk1.7.0_25\jre\bin\nio.dll
+0x000007fefc4e0000 - 0x000007fefc536000 	C:\windows\system32\uxtheme.dll
+0x000007feec730000 - 0x000007feed259000 	C:\windows\system32\ig7icd64.dll
+0x000007fefde50000 - 0x000007fefde5f000 	C:\windows\system32\CRYPTBASE.dll
+0x000007fef24e0000 - 0x000007fef257c000 	C:\windows\system32\mscms.dll
+0x000007fefd250000 - 0x000007fefd26e000 	C:\windows\system32\USERENV.dll
+0x000007fefdf60000 - 0x000007fefdf6f000 	C:\windows\system32\profapi.dll
+0x000007fef2490000 - 0x000007fef24d2000 	C:\windows\system32\icm32.dll
+0x0000000061430000 - 0x00000000615c5000 	C:\Program Files\Java\jdk1.7.0_25\jre\bin\awt.dll
+0x000007fef7560000 - 0x000007fef7685000 	C:\windows\system32\dbghelp.dll
+
+VM Arguments:
+jvm_args: -Xdebug -Xrunjdwp:transport=dt_shmem,address=javadebug -Dfile.encoding=UTF-8 -Djava.library.path=C:\LWJGL\natives\windows 
+java_command: com.sincerelyunreal.game.PuzzleGame
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+CLASSPATH=.;C:\Program Files (x86)\QuickTime\QTSystem\QTJava.zip;.
+PATH=C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\Java\jdk1.7.0_25\bin;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files (x86)\Autodesk\Backburner\
+USERNAME=5002394184
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 Service Pack 1
+
+CPU:total 4 (4 cores per cpu, 1 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, tsc, tscinvbit, tscinv
+
+Memory: 4k page, physical 3985252k(1927656k free), swap 7968644k(5413252k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (23.25-b01) for windows-amd64 JRE (1.7.0_25-b16), built on Jun 12 2013 16:42:02 by "java_re" with unknown MS VC++:1600
+
+time: Wed Sep 04 10:53:51 2013
+elapsed time: 273 seconds
+

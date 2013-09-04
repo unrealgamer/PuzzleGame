@@ -23,9 +23,9 @@ public class Row {
     }
 
     public static Row swapTiles(int leftTileColumn, Row r) {
-        Tile temp = r.getTile(leftTileColumn);
-        r.setTile(leftTileColumn, r.getTile(leftTileColumn + 1));
-        r.setTile(leftTileColumn + 1, temp);
+        Tile temp = new Tile(r.getTile(leftTileColumn));
+        r.setTileType(leftTileColumn, r.getTile(leftTileColumn + 1));
+        r.setTileType(leftTileColumn + 1, temp);
         /*
         Tile temp = tiles[leftTileColumn];
         tiles[leftTileColumn] = tiles[leftTileColumn + 1];
@@ -37,15 +37,19 @@ public class Row {
     public Tile getTile(int col) {
         return tiles[col];
     }
-
+    
     public void setTile(int col, Tile tile) {
         tiles[col] = tile;
+    }
+    
+    public void setTileType(int col, Tile tile){
+        tiles[col].setType(tile.getType());
     }
 
     public void generateRow(int seed) {
         Random r = new Random(seed);
         for (int i = 0; i < Grid.MAX_COLUMNS; i++) {
-            tiles[i] = new Tile(TileTypes.typeFromNumber(r.nextInt(TileTypes.getSize())));
+            tiles[i] = new Tile(TileTypes.typeFromNumber(r.nextInt(TileTypes.getSize() - 1)));
         }
 
     }

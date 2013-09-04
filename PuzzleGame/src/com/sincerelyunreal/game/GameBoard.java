@@ -36,19 +36,19 @@ public class GameBoard {
     }
 
     public void CheckInput(Input in) {
-        if (in.isKeyPressed(Input.KEY_LEFT)) {
+        if (in.isKeyPressed(Input.KEY_LEFT) || in.isKeyPressed(Input.KEY_A)) {
             if (gr.getCursor().getX() >= 1) {
                 gr.getCursor().setX(gr.getCursor().getX() - 1);
             }
-        } else if (in.isKeyPressed(Input.KEY_RIGHT)) {
+        } else if (in.isKeyPressed(Input.KEY_RIGHT) || in.isKeyPressed(Input.KEY_D)) {
             if (gr.getCursor().getX() <= 3) {
                 gr.getCursor().setX(gr.getCursor().getX() + 1);
             }
-        } else if (in.isKeyPressed(Input.KEY_UP)) {
+        } else if (in.isKeyPressed(Input.KEY_UP) || in.isKeyPressed(Input.KEY_W)) {
             if (gr.getCursor().getY() != gr.getRow().size() - 1) {
                 gr.getCursor().setY(gr.getCursor().getY() + 1);
             }
-        } else if (in.isKeyPressed(Input.KEY_DOWN)) {
+        } else if (in.isKeyPressed(Input.KEY_DOWN) || in.isKeyPressed(Input.KEY_S)) {
             if (gr.getCursor().getY() != 0) {
                 gr.getCursor().setY(gr.getCursor().getY() - 1);
             }
@@ -56,6 +56,7 @@ public class GameBoard {
 
         if (in.isKeyPressed(Input.KEY_SPACE)) {
             Row.swapTiles(gr.getCursor().getX(), gr.getRow(gr.getCursor().getY()));
+            gr.checkForMatches();
             //Make a method here for checking if the row is empty, if so delete it. Put it in row class
         }
     }
