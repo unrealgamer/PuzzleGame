@@ -30,15 +30,19 @@ public class GameBoard {
         gr.DrawTiles();
         gr.DrawCursor();
         border.startUse();
-        border.draw(400, 800);//border needs to be fixed
+        border.drawEmbedded(0, 0, 400, 800);//border needs to be fixed
         border.endUse();
-        
+
+
+
     }
 
-    public void UpdateGame(int delta){
-        gr.moveUp(delta);
+    public void UpdateGame(int delta) {
+        if (gr.getDisplacement() >= 8) {
+            gr.moveUp(delta);
+        }
     }
-    
+
     public void CheckInput(Input in) {
         if (in.isKeyPressed(Input.KEY_LEFT) || in.isKeyPressed(Input.KEY_A)) {
             if (gr.getCursor().getX() >= 1) {

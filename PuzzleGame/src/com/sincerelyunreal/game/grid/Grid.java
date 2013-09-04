@@ -7,7 +7,6 @@ package com.sincerelyunreal.game.grid;
 import static com.sincerelyunreal.game.grid.Grid.INITIAL_ROWS;
 import static com.sincerelyunreal.game.grid.Grid.MAX_COLUMNS;
 import java.util.ArrayList;
-import org.newdawn.slick.SpriteSheet;
 
 /**
  *
@@ -20,9 +19,9 @@ public class Grid {
     public static final int BORDER_WIDTH = 8;
     public static final int BORDER_HEIGHT = 8;
     private ArrayList<Row> rows;
-    private SpriteSheet sheet;
     private Cursor c;
-    private float displacement;
+    private int displacement;
+    private float tick;
 
     public Grid(ArrayList<Row> rows) {
         this.rows = rows;
@@ -32,7 +31,8 @@ public class Grid {
         rows = new ArrayList<>();
         initializeGrid();
         c = new Cursor();
-        displacement = 264;
+        displacement = 256;
+        tick = 0;
     }
 
     private void initializeGrid() {
@@ -146,7 +146,7 @@ public class Grid {
 
     public void checkForMatches() {
         //needs some fine tuning
-        
+
         ArrayList<Tile> verL = new ArrayList<>();
         ArrayList<Tile> verR = new ArrayList<>();
         ArrayList<Tile> hor = new ArrayList<>();
@@ -187,10 +187,14 @@ public class Grid {
         }
     }
 
-    public void moveUp(int delta){
-        displacement -= (float)delta / 1000f;
+    public void moveUp(int delta) {
+        tick -= ((float) delta / 1500f);
+        if (Math.abs(tick) / 1f > 1f) {
+            displacement -= 5;
+            tick = 0;//memory intensive losses about 40 frames
+        }
     }
-    
+
     public void DrawCursor() {
         c.draw(displacement);
     }
