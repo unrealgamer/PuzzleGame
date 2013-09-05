@@ -166,6 +166,7 @@ public class Grid {
 
     private void removeMatches(ArrayList<Tile> group) {
         for (int i = 0; i <= group.size(); i++) {
+            
             //rows.get(group.get(i).getY()).setTile(group.get(i).getX());
             //rows.get(group.get(i).getY()).setTile(group.get(i).getX(), new Tile(TileTypes.NULL));
             //grid[group.get(i).getLoc().y][group.get(i).getLoc().x].setID(6);
@@ -190,7 +191,7 @@ public class Grid {
     public void moveUp(int delta) {
         tick -= ((float) delta / 1500f);
         if (Math.abs(tick) / 1f > 1f) {
-            displacement -= 5;
+            displacement -= 4;
             tick = 0;//memory intensive losses about 40 frames
         }
     }

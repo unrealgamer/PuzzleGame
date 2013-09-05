@@ -19,11 +19,13 @@ public class GameBoard {
 
     Grid gr;
     Image border;
+    private boolean isPaused;
 
     public GameBoard() throws SlickException {
         gr = new Grid();
         border = new Image("res/border.png");
         Tile.initSheet();
+        isPaused = false;
     }
 
     public void DrawGame() {
@@ -38,7 +40,7 @@ public class GameBoard {
     }
 
     public void UpdateGame(int delta) {
-        if (gr.getDisplacement() >= 8) {
+        if (gr.getDisplacement() > 4 && !isPaused) {
             gr.moveUp(delta);
         }
     }
@@ -60,6 +62,8 @@ public class GameBoard {
             if (gr.getCursor().getY() != 0) {
                 gr.getCursor().setY(gr.getCursor().getY() - 1);
             }
+        } else if (in.isKeyPressed(Input.KEY_PAUSE)) {
+            isPaused = !isPaused;
         }
 
         if (in.isKeyPressed(Input.KEY_SPACE)) {
