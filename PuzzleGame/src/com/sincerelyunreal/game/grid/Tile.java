@@ -54,6 +54,8 @@ public class Tile {
         return y;
     }
     
-    
+    public boolean shouldCollapse(Tile t){
+        return true;
+    }
     
 }

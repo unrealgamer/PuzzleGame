@@ -165,9 +165,11 @@ public class Grid {
     }
 
     private void removeMatches(ArrayList<Tile> group) {
-        for (int i = 0; i <= group.size(); i++) {
-            
-            //rows.get(group.get(i).getY()).setTile(group.get(i).getX());
+        for (int i = 0; i <= group.size() - 1; i++) {
+            if (group.size() == 0) {
+                break;
+            }
+            rows.get(group.get(i).getY()).setTile(group.get(i).getX(), new Tile(TileTypes.NULL));
             //rows.get(group.get(i).getY()).setTile(group.get(i).getX(), new Tile(TileTypes.NULL));
             //grid[group.get(i).getLoc().y][group.get(i).getLoc().x].setID(6);
         }
@@ -189,9 +191,9 @@ public class Grid {
     }
 
     public void moveUp(int delta) {
-        tick -= ((float) delta / 1500f);
+        tick -= ((float) delta / 1500f);//1500 is 1.5 seconds
         if (Math.abs(tick) / 1f > 1f) {
-            displacement -= 4;
+            displacement -= 3;
             tick = 0;//memory intensive losses about 40 frames
         }
     }
@@ -211,6 +213,15 @@ public class Grid {
 
     public Row getRow(int x) {
         return rows.get(x);
+    }
+
+    public void addRow() {
+        if (displacement > 64) {
+            Row r = new Row();
+            r.generateRow();
+            rows.add(0, r);
+            assignLocations();
+        }
     }
 
     public ArrayList<Row> getRow() {

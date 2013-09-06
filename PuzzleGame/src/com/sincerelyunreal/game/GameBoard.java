@@ -34,9 +34,6 @@ public class GameBoard {
         border.startUse();
         border.drawEmbedded(0, 0, 400, 800);//border needs to be fixed
         border.endUse();
-
-
-
     }
 
     public void UpdateGame(int delta) {
@@ -64,6 +61,8 @@ public class GameBoard {
             }
         } else if (in.isKeyPressed(Input.KEY_PAUSE)) {
             isPaused = !isPaused;
+        } else if (in.isKeyPressed(Input.KEY_TAB)) {
+            gr.addRow();
         }
 
         if (in.isKeyPressed(Input.KEY_SPACE)) {
