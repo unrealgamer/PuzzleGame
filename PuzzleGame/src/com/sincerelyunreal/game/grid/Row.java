@@ -75,6 +75,23 @@ public class Row {
         return false;
     }
 
+    public void draw(float d) {
+        if (Tile.TileSheet == null) {
+            throw new NullPointerException("TileSheet has not been constructed");
+        }
+        
+        int tileCount = 0;
+
+        for (Tile t : tiles) {
+
+            int x = tileCount * 64;
+            tileCount++;
+            Tile.TileSheet.startUse();
+            Tile.TileSheet.getSubImage(t.getType().ordinal(), 1).drawEmbedded(x + Grid.BORDER_WIDTH,  Grid.BORDER_HEIGHT + d, 64, 64);
+            Tile.TileSheet.endUse();
+        }
+    }
+    
     public void draw(int r, float d) {
         if (Tile.TileSheet == null) {
             throw new NullPointerException("TileSheet has not been constructed");

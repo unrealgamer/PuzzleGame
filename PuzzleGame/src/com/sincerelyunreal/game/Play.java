@@ -39,6 +39,7 @@ public class Play extends BasicGameState{
     @Override
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         Game.DrawGame();
+        g.drawString(Game.gr.getDisplacement() + "", 10, 30);
     }
 
     @Override

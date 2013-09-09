@@ -19,6 +19,7 @@ public class Grid {
     public static final int BORDER_WIDTH = 8;
     public static final int BORDER_HEIGHT = 8;
     private ArrayList<Row> rows;
+    private Row rowToAdd;
     private Cursor c;
     private int displacement;
     private float tick;
@@ -29,7 +30,9 @@ public class Grid {
 
     public Grid() {
         rows = new ArrayList<>();
+        rowToAdd = new Row();
         initializeGrid();
+        rowToAdd.generateRow();
         c = new Cursor();
         displacement = 256;
         tick = 0;
@@ -48,18 +51,6 @@ public class Grid {
     }
 
     /**
-     * Shane, see if you can figure this out. I tried to do what you did
-     * earlier, check the two rows beneath the row sent in for a match of three
-     * and if there is return it to be recreated.
-     *
-     * The first for loop goes through the two rows beneath the row being passed
-     * in. The second goes through the column and checks each column for the
-     * same Tile type.
-     *
-     * Writing Tile type lead to to find the error, so never mind.
-     *
-     *
-     *
      * @param newRow
      * @return False if 3 are not found in a horizontal pattern
      */
@@ -166,7 +157,7 @@ public class Grid {
 
     private void removeMatches(ArrayList<Tile> group) {
         for (int i = 0; i <= group.size() - 1; i++) {
-            if (group.size() == 0) {
+            if (group.isEmpty()) {
                 break;
             }
             rows.get(group.get(i).getY()).setTile(group.get(i).getX(), new Tile(TileTypes.NULL));
@@ -180,6 +171,7 @@ public class Grid {
         for (int r = rows.size() - 1; r >= 0; r--) {
             rows.get(r).draw(r, displacement);
         }
+        rowToAdd.draw(displacement + (rows.size() * 64));
     }
 
     public void printGrid(Row newRow) {
@@ -191,10 +183,16 @@ public class Grid {
     }
 
     public void moveUp(int delta) {
-        tick -= ((float) delta / 1500f);//1500 is 1.5 seconds
+        tick -= ((float) delta / 1500f);
         if (Math.abs(tick) / 1f > 1f) {
             displacement -= 3;
             tick = 0;//memory intensive losses about 40 frames
+            System.out.println(displacement + (rows.size() * 64) + "");
+
+            if (displacement + (rows.size() * 64) < 584 - BORDER_HEIGHT) {
+                addRow(rowToAdd);
+                rowToAdd.generateRow();
+            }
         }
     }
 
@@ -222,6 +220,11 @@ public class Grid {
             rows.add(0, r);
             assignLocations();
         }
+    }
+
+    public void addRow(Row r) {
+        rows.add(0, r);
+        assignLocations();
     }
 
     public ArrayList<Row> getRow() {
