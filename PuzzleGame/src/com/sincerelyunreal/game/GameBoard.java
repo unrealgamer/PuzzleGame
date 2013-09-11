@@ -37,7 +37,7 @@ public class GameBoard {
     }
 
     public void UpdateGame(int delta) {
-        if (gr.getDisplacement() > - 1 && !isPaused) {
+        if (gr.getDisplacement() >= 4 && !isPaused) {
             gr.moveUp(delta);
         }
     }

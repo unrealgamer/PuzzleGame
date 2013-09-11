@@ -4,8 +4,6 @@
  */
 package com.sincerelyunreal.game.grid;
 
-import static com.sincerelyunreal.game.grid.Grid.INITIAL_ROWS;
-import static com.sincerelyunreal.game.grid.Grid.MAX_COLUMNS;
 import java.util.ArrayList;
 
 /**
@@ -200,10 +198,9 @@ public class Grid {
             displacement -= 4;
             tick = 0;//memory intensive losses about 40 frames
             System.out.println(displacement + (rows.size() * 64) + "");
-            if (displacement + (rows.size() * 64) < ADD_NEW_ROW_HERE - BORDER_HEIGHT) {
+            if (displacement + (rows.size() * 64) <= ADD_NEW_ROW_HERE - BORDER_HEIGHT) {
                 addRow(rowToAdd);
-                rowToAdd = new Row();
-                rowToAdd.generateRow();
+                c.setY(c.getY() + 1);
             }
         }
     }
@@ -213,7 +210,7 @@ public class Grid {
     }
 
     public Cursor getCursor() {
-        return this.c;
+        return c;
     }
 
     public Row getRow(int x) {
@@ -222,15 +219,18 @@ public class Grid {
 
     public void addRow() {
         if (displacement > 64) {
-            Row r = new Row();
-            r.generateRow();
-            rows.add(0, r);
-            assignLocations();
+            displacement -= (displacement + (rows.size() * 64) - ADD_NEW_ROW_HERE + 8);
+            if (displacement + (rows.size() * 64) <= ADD_NEW_ROW_HERE - BORDER_HEIGHT) {
+                addRow(rowToAdd);
+                c.setY(c.getY() + 1);
+            }
         }
     }
 
     public void addRow(Row r) {
         rows.add(0, r);
+        rowToAdd = new Row();
+        rowToAdd.generateRow();
         assignLocations();
     }
 
