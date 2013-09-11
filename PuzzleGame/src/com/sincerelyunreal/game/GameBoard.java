@@ -37,7 +37,7 @@ public class GameBoard {
     }
 
     public void UpdateGame(int delta) {
-        if (gr.getDisplacement() > 4 && !isPaused) {
+        if (gr.getDisplacement() > - 1 && !isPaused) {
             gr.moveUp(delta);
         }
     }
@@ -63,6 +63,10 @@ public class GameBoard {
             isPaused = !isPaused;
         } else if (in.isKeyPressed(Input.KEY_TAB)) {
             gr.addRow();
+        } else if (in.isKeyPressed(Input.KEY_ADD)) {
+            gr.setTimePerTick(gr.getTimePerTick() + 100);
+        } else if (in.isKeyPressed(Input.KEY_SUBTRACT)) {
+            gr.setTimePerTick(gr.getTimePerTick() - 100);
         }
 
         if (in.isKeyPressed(Input.KEY_SPACE)) {

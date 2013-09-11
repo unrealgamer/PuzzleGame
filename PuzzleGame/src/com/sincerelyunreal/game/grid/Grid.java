@@ -18,11 +18,13 @@ public class Grid {
     public static final int INITIAL_ROWS = 6;
     public static final int BORDER_WIDTH = 8;
     public static final int BORDER_HEIGHT = 8;
+    public static final int ADD_NEW_ROW_HERE = 584;
     private ArrayList<Row> rows;
     private Row rowToAdd;
     private Cursor c;
     private int displacement;
     private float tick;
+    private float timePerTick;
 
     public Grid(ArrayList<Row> rows) {
         this.rows = rows;
@@ -36,6 +38,7 @@ public class Grid {
         c = new Cursor();
         displacement = 256;
         tick = 0;
+        timePerTick = 1500;
     }
 
     private void initializeGrid() {
@@ -155,6 +158,15 @@ public class Grid {
         removeMatches(checkThree(hor));
     }
 
+    public void checkForMatchesInNewRow() {
+        //needs some fine tuning
+        ArrayList<Tile> hor = new ArrayList<>();
+        for (int i = 0; i < Grid.MAX_COLUMNS; i++) {
+            hor.add(rows.get(c.getY()).getTile(i));
+        }
+        removeMatches(checkThree(hor));
+    }
+
     private void removeMatches(ArrayList<Tile> group) {
         for (int i = 0; i <= group.size() - 1; i++) {
             if (group.isEmpty()) {
@@ -169,7 +181,7 @@ public class Grid {
 
     public void DrawTiles() {
         for (int r = rows.size() - 1; r >= 0; r--) {
-            rows.get(r).draw(r, displacement);
+            rows.get(r).draw(r, displacement, rows.size() - 1);//needs a better way
         }
         rowToAdd.draw(displacement + (rows.size() * 64));
     }
@@ -183,30 +195,25 @@ public class Grid {
     }
 
     public void moveUp(int delta) {
-        tick -= ((float) delta / 1500f);
+        tick -= ((float) delta / timePerTick);
         if (Math.abs(tick) / 1f > 1f) {
-            displacement -= 3;
+            displacement -= 4;
             tick = 0;//memory intensive losses about 40 frames
             System.out.println(displacement + (rows.size() * 64) + "");
-
-            if (displacement + (rows.size() * 64) < 584 - BORDER_HEIGHT) {
+            if (displacement + (rows.size() * 64) < ADD_NEW_ROW_HERE - BORDER_HEIGHT) {
                 addRow(rowToAdd);
+                rowToAdd = new Row();
                 rowToAdd.generateRow();
             }
         }
     }
 
     public void DrawCursor() {
-        c.draw(displacement);
+        c.draw(0, displacement, rows.size() - 1);
     }
 
     public Cursor getCursor() {
         return this.c;
-    }
-
-    public static int getCorrectRow(int r) {
-        r = 5 - r;
-        return r;
     }
 
     public Row getRow(int x) {
@@ -233,5 +240,13 @@ public class Grid {
 
     public float getDisplacement() {
         return displacement;
+    }
+
+    public float getTimePerTick() {
+        return timePerTick;
+    }
+
+    public void setTimePerTick(float i) {
+        timePerTick = i;
     }
 }

@@ -51,7 +51,6 @@ public class Row {
         for (int i = 0; i < Grid.MAX_COLUMNS; i++) {
             tiles[i] = new Tile(TileTypes.typeFromNumber(r.nextInt(TileTypes.getSize() - 1)));
         }
-
     }
 
     public void generateRow() {
@@ -92,12 +91,12 @@ public class Row {
         }
     }
     
-    public void draw(int r, float d) {
+    public void draw(int r, float d, int size) {
         if (Tile.TileSheet == null) {
             throw new NullPointerException("TileSheet has not been constructed");
         }
         
-        r = Grid.getCorrectRow(r);
+        r = Math.abs(r - size);
         
         int tileCount = 0;
 
@@ -111,7 +110,7 @@ public class Row {
             Tile.TileSheet.endUse();
         }
     }
-
+    
     public String toString() {
         String out = "";
         for (Tile t : tiles) {

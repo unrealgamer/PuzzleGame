@@ -29,9 +29,11 @@ public class Cursor {
         y = 2;
     }
     
-    public void draw(float d){
+    public void draw(int r, float d, int size){
+        r = y;
+        r = Math.abs(y - size);
         img.startUse();
-        img.drawEmbedded(x * 64 + Grid.BORDER_WIDTH, Grid.getCorrectRow(y) * 64 + Grid.BORDER_HEIGHT + d, 128, 64);
+        img.drawEmbedded(x * 64 + Grid.BORDER_WIDTH, r * 64 + Grid.BORDER_HEIGHT + d, 128, 64);
         img.endUse();
     }
     
@@ -50,6 +52,4 @@ public class Cursor {
     public void setY(int y){
         this.y = y;
     }
-    
-    
 }
