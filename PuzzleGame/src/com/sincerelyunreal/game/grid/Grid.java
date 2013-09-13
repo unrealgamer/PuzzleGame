@@ -176,6 +176,7 @@ public class Grid {
     public void moveUp(int delta) {
         tick -= ((float) delta / timePerTick);
         if (Math.abs(tick) / 1f > 1f) {
+            timePerTick -= 1;
             displacement -= 4;
             tick = 0;//memory intensive losses about 40 frames
             if (displacement + (rows.size() * 64) <= ADD_NEW_ROW_HERE - BORDER_HEIGHT) {
