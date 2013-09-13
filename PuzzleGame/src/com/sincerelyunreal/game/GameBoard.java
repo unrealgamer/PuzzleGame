@@ -39,6 +39,8 @@ public class GameBoard {
     public void UpdateGame(int delta) {
         if (gr.getDisplacement() >= 4 && !isPaused) {
             gr.moveUp(delta);
+        } else {
+            gr.removeEmptyRows();
         }
     }
 
@@ -71,7 +73,8 @@ public class GameBoard {
 
         if (in.isKeyPressed(Input.KEY_SPACE)) {
             Row.swapTiles(gr.getCursor().getX(), gr.getRow(gr.getCursor().getY()));
-            gr.checkForMatches();
+            gr.checkForMatchesOnCursor();
+            gr.gravity();
             //Make a method here for checking if the row is empty, if so delete it. Put it in row class
         }
     }

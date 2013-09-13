@@ -74,36 +74,6 @@ public class Grid {
             break;
         }
         return false;
-
-        /*
-         if(newRow.isMatch())
-         return true;
-        
-         if(rows.size() < 2)
-         return false;
-        
-         printGrid(newRow);
-        
-         for(int c = 0; c < MAX_COLUMNS-1; c++){ //Iterates through each column
-         }
-         return false;
-         * ===================================================
-         * for (int i = 0; i < MAX_COLUMNS - 1; i++) {
-         for (int j = 0; i < rows.size() - 1; j++) {
-         if (count == 3) {
-         return true;
-         }
-         if (rows.get(i).getTile(j) == rows.get(i).getTile(j + 1)) {
-         count++;
-         if (rows.get(i).getTile(j) == rows.get(i).getTile(j + 2)){
-         return true;
-         }
-         } else {
-         count = 2;
-         }
-         }
-        
-         }         */
     }
 
     private void assignLocations() {
@@ -136,7 +106,7 @@ public class Grid {
         return rGroup;
     }
 
-    public void checkForMatches() {
+    public void checkForMatchesOnCursor() {
         //needs some fine tuning
 
         ArrayList<Tile> verL = new ArrayList<>();
@@ -156,6 +126,18 @@ public class Grid {
         removeMatches(checkThree(hor));
     }
 
+    public void checkForMatches() {
+        //needs some fine tuning
+        /*
+         for (int i = 0; i < rows.size(); i++) {
+         verL.add(rows.get(i).getTile(c.getX()));
+         }
+        
+        
+         removeMatches(checkThree(hor));
+         */
+    }
+
     public void checkForMatchesInNewRow() {
         //needs some fine tuning
         ArrayList<Tile> hor = new ArrayList<>();
@@ -170,9 +152,8 @@ public class Grid {
             if (group.isEmpty()) {
                 break;
             }
-            rows.get(group.get(i).getY()).setTile(group.get(i).getX(), new Tile(TileTypes.NULL));
-            //rows.get(group.get(i).getY()).setTile(group.get(i).getX(), new Tile(TileTypes.NULL));
-            //grid[group.get(i).getLoc().y][group.get(i).getLoc().x].setID(6);
+            rows.get(group.get(i).getY()).setTile(group.get(i).getX(), new Tile(group.get(i).getX(), group.get(i).getY(), TileTypes.NULL));
+
         }
     }
     //==========================================================================
@@ -197,12 +178,30 @@ public class Grid {
         if (Math.abs(tick) / 1f > 1f) {
             displacement -= 4;
             tick = 0;//memory intensive losses about 40 frames
-            System.out.println(displacement + (rows.size() * 64) + "");
             if (displacement + (rows.size() * 64) <= ADD_NEW_ROW_HERE - BORDER_HEIGHT) {
                 addRow(rowToAdd);
                 c.setY(c.getY() + 1);
             }
         }
+    }
+
+    public void gravity() {
+        boolean wasModified = true;
+        while (wasModified) {
+            wasModified = false;
+            for (int y = rows.size() - 1; y >= 1; y--) {
+                for (int x = 0; x != MAX_COLUMNS; x++) {
+                    Tile t1 = rows.get(y).getTile(x);
+                    Tile t2 = rows.get(y - 1).getTile(x);
+                    if (t1.getType() != TileTypes.NULL && t2.getType() == TileTypes.NULL) {
+                        t1.switchTile(t2);
+                        assignLocations();
+                        wasModified = true;
+                    }
+                }
+            }
+        }
+
     }
 
     public void DrawCursor() {
@@ -218,6 +217,7 @@ public class Grid {
     }
 
     public void addRow() {
+        removeEmptyRows();
         if (displacement > 64) {
             displacement -= (displacement + (rows.size() * 64) - ADD_NEW_ROW_HERE + 8);
             if (displacement + (rows.size() * 64) <= ADD_NEW_ROW_HERE - BORDER_HEIGHT) {
@@ -228,6 +228,7 @@ public class Grid {
     }
 
     public void addRow(Row r) {
+        
         rows.add(0, r);
         rowToAdd = new Row();
         rowToAdd.generateRow();
@@ -248,5 +249,15 @@ public class Grid {
 
     public void setTimePerTick(float i) {
         timePerTick = i;
+    }
+
+    public void removeEmptyRows() {
+        if (rows.get(rows.size() - 1).isEmpty()) {
+            if (c.getY() == rows.size() - 1) {
+                c.setY(c.getY() - 1);
+            }
+            rows.remove(rows.size() - 1);
+            displacement += 64;
+        }
     }
 }

@@ -28,6 +28,12 @@ public class Tile {
         this.y = t.y;
     }
     
+    public Tile(int x, int y, TileTypes type){
+        this.x = x;
+        this.y = y;
+        this.type = type;
+    }
+    
     public TileTypes getType()
     {
         return this.type;
@@ -56,6 +62,12 @@ public class Tile {
     
     public boolean shouldCollapse(Tile t){
         return true;
+    }
+
+    void switchTile(Tile t2) {
+        Tile temp = new Tile(this.x, this.y, this.type);
+        this.x = t2.getX(); this.y = t2.getY(); this.type = t2.getType();
+        t2.x = temp.getX(); t2.y = temp.getY(); t2.type = temp.getType();
     }
     
 }
